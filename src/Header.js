@@ -1,11 +1,13 @@
 import React from "react";
 import "./Header.css";
-import { Avatar, IconButton } from "@mui/material";
+import { Avatar, Button, IconButton } from "@mui/material";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import TuneOutlinedIcon from "@mui/icons-material/TuneOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import AppsRoundedIcon from "@mui/icons-material/AppsRounded";
 import SettingsIcon from "@mui/icons-material/Settings";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 function Header() {
   const rightIcon = (Icon) => (
@@ -31,6 +33,12 @@ function Header() {
           <TuneOutlinedIcon className="header-search-tune" />
         </div>
         <div className="header-settings">
+          <Button className="header-status-button" size="small">
+            <FiberManualRecordIcon color="success" fontSize="small" />
+            <p>Active</p>
+            <ArrowDropDownIcon />
+          </Button>
+
           {rightIcon(HelpOutlineOutlinedIcon)}
           {rightIcon(SettingsIcon)}
           {rightIcon(AppsRoundedIcon)}

@@ -55,6 +55,7 @@
 .header-settings {
   display: flex;
   padding-right: 10px;
+  align-items: center;
 }
 .header-settings-icon {
 }
@@ -62,4 +63,17 @@
 .header-settings-avatar {
   scale: 85%;
   margin-left: 5px;
+}
+
+.header-status-button {
+  text-transform: capitalize !important;
+  padding: 15px !important;
+  border-radius: 20px !important;
+  border: 1px solid #e0e3e7 !important;
+  color: #484b4f !important;
+  background-color: transparent !important;
+  font-weight: 500 !important;
+  height: 40px;
+  width: 100px;
+  margin-right: 10px !important;
 }

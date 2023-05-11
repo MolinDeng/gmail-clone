@@ -21,6 +21,7 @@ import TextSnippetIcon from "@mui/icons-material/TextSnippet";
 import ReportGmailerrorredOutlinedIcon from "@mui/icons-material/ReportGmailerrorredOutlined";
 import ReportIcon from "@mui/icons-material/Report";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 
 function Navi() {
   return (
@@ -34,21 +35,21 @@ function Navi() {
         Icon={InboxOutlinedIcon}
         IconSelected={InboxRoundedIcon}
         title="Inbox"
-        number={54}
-        selected={false}
+        number={2}
+        selected={true}
       />
       <NaviOption
         Icon={StarBorderOutlinedIcon}
         IconSelected={StarIcon}
         title="Starred"
-        number={54}
-        selected={true}
+        number={0}
+        selected={false}
       />
       <NaviOption
         Icon={AccessTimeOutlinedIcon}
         IconSelected={AccessTimeFilledIcon}
         title="Snoozed"
-        number={54}
+        number={0}
         selected={false}
       />
       <NaviOption
@@ -83,6 +84,12 @@ function Navi() {
         Icon={ReportGmailerrorredOutlinedIcon}
         IconSelected={ReportIcon}
         title="Spam"
+        number={0}
+        selected={false}
+      />
+      <NaviOption
+        Icon={DeleteOutlineIcon}
+        title="Trash"
         number={0}
         selected={false}
       />

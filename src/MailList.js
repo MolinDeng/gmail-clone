@@ -3,39 +3,31 @@ import "./MailList.css";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { IconButton, Checkbox, Button } from "@mui/material";
+import { IconButton, Checkbox } from "@mui/material";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardIcon from "@mui/icons-material/Keyboard";
 function MailList() {
+  const SmallIconButton = (Icon) => (
+    <IconButton size="small">
+      <Icon />
+    </IconButton>
+  );
+
   return (
     <div className="maillist">
       <div className="maillist-settings">
         <div className="maillist-settings-left">
           <Checkbox />
-          <IconButton>
-            <ArrowDropDownIcon />
-          </IconButton>
-          <IconButton>
-            <RefreshIcon />
-          </IconButton>
-          <IconButton>
-            <MoreVertIcon />
-          </IconButton>
+          {SmallIconButton(ArrowDropDownIcon)}
+          {SmallIconButton(RefreshIcon)}
+          {SmallIconButton(MoreVertIcon)}
         </div>
         <div className="maillist-settings-right">
-          <IconButton>
-            <KeyboardArrowLeftIcon />
-          </IconButton>
-          <IconButton>
-            <KeyboardArrowRightIcon />
-          </IconButton>
-          <IconButton>
-            <KeyboardIcon />
-          </IconButton>
-          <IconButton>
-            <ArrowDropDownIcon />
-          </IconButton>
+          {SmallIconButton(KeyboardArrowLeftIcon)}
+          {SmallIconButton(KeyboardArrowRightIcon)}
+          {SmallIconButton(KeyboardIcon)}
+          {SmallIconButton(ArrowDropDownIcon)}
         </div>
       </div>
       <div className="maillist-tabs"></div>
