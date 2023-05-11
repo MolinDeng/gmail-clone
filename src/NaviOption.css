@@ -1,4 +1,5 @@
-.navi-option {
+.navi-option,
+.navi-option-active {
     display: flex;
     align-items: center;
     height: 40px;
@@ -6,8 +7,38 @@
     border-radius: 20px;
     cursor: pointer;
 }
+.navi-option-icon {
+    padding: 5px;
+    color: #898c8d;
+}
 
-/* .navi-option:hover {
-    font-weight: bold;
+.navi-option-title {
+    flex: 1;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #242528;
+}
+
+.navi-option-num {
+    font-size: 14px;
+    font-weight: 400;
+    color: #242528;
+}
+/* Active sty;e */
+.navi-option:hover {
     background-color: #dddddd;
-} */
+}
+
+.navi-option-active {
+    background-color: #d3e3fd;
+}
+.navi-option-active .navi-option-icon {
+    color: black;
+}
+.navi-option-active .navi-option-title,
+.navi-option-active .navi-option-num {
+    color: black;
+    font-weight: bold;
+}
+

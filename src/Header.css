@@ -14,7 +14,7 @@
 
 .header-left > img {
     object-fit: contain;
-    height: 50px;
+    height: 40px;
     margin-left: 5px;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .header-search-icon {
-    color: gray;
+    color: #444746;
 }
 .header-search > input {
     border: none;
@@ -42,7 +42,7 @@
     background-color: transparent;
 }
 .header-search-tune {
-
+    color: #444746;
 }
 
 .header-right {

@@ -1,11 +1,16 @@
 import React from "react";
 import "./NaviOption.css";
-function NaviOption({ Icon, title, number }) {
+function NaviOption({ Icon, IconSelected, title, number, selected }) {
   return (
-    <div className="navi-option">
-      <Icon />
-      <p>{title}</p>
-      <p>{number}</p>
+    <div className={`navi-option${selected ? "-active" : ""}`}>
+      {selected ? (
+        <IconSelected className="navi-option-icon" />
+      ) : (
+        <Icon className="navi-option-icon" />
+      )}
+
+      <p className="navi-option-title">{title}</p>
+      {number !== 0 && <p className="navi-option-num">{number}</p>}
     </div>
   );
 }

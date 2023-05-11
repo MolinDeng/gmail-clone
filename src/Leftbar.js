@@ -8,25 +8,27 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import VideocamOutlinedIcon from "@mui/icons-material/VideocamOutlined";
 
 function Leftbar() {
-  const createIcon = (Icon, title) => (
-    <div className="leftbar-option">
-      <IconButton>
-        <Icon className="leftbar-icon" />
+  const createIcon = (Icon, title, selected) => (
+    <div className={`leftbar-option${selected ? "-active" : ""}`}>
+      <IconButton className="leftbar-option-button">
+        <div className="leftbar-option-icon-conatainer">
+          <Icon fontSize="small" className="leftbar-option-icon" />
+        </div>
       </IconButton>
 
-      <h4>{title}</h4>
+      <p>{title}</p>
     </div>
   );
 
   return (
-    <div className="Leftbar">
-      <IconButton>
+    <div className="leftbar">
+      <IconButton className="lefebar-menu-button">
         <MenuIcon />
       </IconButton>
-      {createIcon(EmailIcon, "Email")}
-      {createIcon(ChatBubbleOutlineIcon, "Chat")}
-      {createIcon(GroupsIcon, "Spaces")}
-      {createIcon(VideocamOutlinedIcon, "Meet")}
+      {createIcon(EmailIcon, "Mail", true)}
+      {createIcon(ChatBubbleOutlineIcon, "Chat", false)}
+      {createIcon(GroupsIcon, "Spaces", false)}
+      {createIcon(VideocamOutlinedIcon, "Meet", false)}
     </div>
   );
 }
