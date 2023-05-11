@@ -1,0 +1,18 @@
+.maillist {
+}
+
+.maillist-settings {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.maillist-settings-left {
+}
+
+.maillist-settings-right {
+}
+
+.maillist-tabs {
+}

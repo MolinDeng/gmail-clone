@@ -1,7 +1,28 @@
 .app {
-    display: flex;
-    flex-direction: row;
+  display: flex;
 }
-.main {
-    flex-grow: 1;
+
+.app-main {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+.app-body {
+  display: flex;
+  flex-grow: 1;
+}
+
+.app-inner {
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0px;
+  flex-direction: row;
+  width: 100vh;
+
+  background-color: white;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-top: 0;
+  margin-right: 20px;
+  margin-bottom: 20px;
 }

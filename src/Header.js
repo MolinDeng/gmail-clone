@@ -9,7 +9,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 
 function Header() {
   const rightIcon = (Icon) => (
-    <div className="header-right-icon">
+    <div className="header-settings-icon">
       <IconButton>
         <Icon />
       </IconButton>
@@ -24,16 +24,18 @@ function Header() {
           alt=""
         />
       </div>
-      <div className="header-search">
-        <SearchOutlinedIcon className="header-search-icon" />
-        <input placeholder="Search in mail" type="text" />
-        <TuneOutlinedIcon className="header-search-tune" />
-      </div>
       <div className="header-right">
-        {rightIcon(HelpOutlineOutlinedIcon)}
-        {rightIcon(SettingsIcon)}
-        {rightIcon(AppsRoundedIcon)}
-        <Avatar className="header-right-avatar" />
+        <div className="header-search">
+          <SearchOutlinedIcon className="header-search-icon" />
+          <input placeholder="Search in mail" type="text" />
+          <TuneOutlinedIcon className="header-search-tune" />
+        </div>
+        <div className="header-settings">
+          {rightIcon(HelpOutlineOutlinedIcon)}
+          {rightIcon(SettingsIcon)}
+          {rightIcon(AppsRoundedIcon)}
+          <Avatar className="header-settings-avatar" />
+        </div>
       </div>
     </div>
   );
