@@ -1,0 +1,13 @@
+.navi-option {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* .navi-option:hover {
+    font-weight: bold;
+    background-color: #dddddd;
+} */
