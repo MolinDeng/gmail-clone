@@ -1,0 +1,34 @@
+.maillist-single-section {
+  display: flex;
+  flex: 0 1 250px;
+  align-items: center;
+
+  color: #4c4f4e;
+  cursor: pointer;
+
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-bottom: 15px;
+  margin-right: 10px;
+  margin-bottom: -1px;
+}
+.maillist-single-section:hover {
+  background-color: #f4f4f4;
+}
+
+h4 {
+  font-weight: 500;
+  font-size: 14px;
+  padding-left: 10px;
+  padding-right: 30px;
+}
+
+.active {
+  border-bottom: 3px solid #0858d0;
+  color: #0858d0;
+}
+
+.icon {
+  padding-left: 10px;
+  padding-right: 10px;
+}

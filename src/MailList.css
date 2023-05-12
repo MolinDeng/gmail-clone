@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+
+  overflow: scroll;
 }
 
 .maillist-settings {
@@ -9,8 +11,11 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
   margin: 10px;
+
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 
 .maillist-settings-left {
@@ -19,5 +24,12 @@
 .maillist-settings-right {
 }
 
-.maillist-tabs {
+.maillist-sections {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10px;
+  margin-right: 10px;
+
+  border-bottom: 1px solid #eceff1;
 }

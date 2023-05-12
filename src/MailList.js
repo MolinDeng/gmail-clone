@@ -7,6 +7,13 @@ import { IconButton, Checkbox } from "@mui/material";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardIcon from "@mui/icons-material/Keyboard";
+import Section from "./Section";
+import InboxIcon from "@mui/icons-material/Inbox";
+import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
+// import LocalOfferIcon from "@mui/icons-material/LocalOffer";
+// import PeopleIcon from "@mui/icons-material/People";
+import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
+
 function MailList() {
   const SmallIconButton = (Icon) => (
     <IconButton size="small">
@@ -30,7 +37,15 @@ function MailList() {
           {SmallIconButton(ArrowDropDownIcon)}
         </div>
       </div>
-      <div className="maillist-tabs"></div>
+      <div className="maillist-sections">
+        <Section Icon={InboxIcon} title={"Primary"} selected={true} />
+        <Section
+          Icon={LocalOfferOutlinedIcon}
+          title={"Promotions"}
+          selected={false}
+        />
+        <Section Icon={PeopleOutlinedIcon} title={"Social"} selected={false} />
+      </div>
     </div>
   );
 }
