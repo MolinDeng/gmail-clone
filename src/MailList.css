@@ -31,8 +31,15 @@
   margin-left: 10px;
   margin-right: 10px;
   border-bottom: 1px solid #eceff1;
+  margin-bottom: 5px;
 
   position: sticky;
   top: 0;
   z-index: 999;
+}
+
+.maillist-rows {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
 }

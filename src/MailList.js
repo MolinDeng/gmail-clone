@@ -13,8 +13,14 @@ import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
 // import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 // import PeopleIcon from "@mui/icons-material/People";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
+import EmailRow from "./EmailRow";
+import { LoremIpsum } from "lorem-ipsum";
 
 function MailList() {
+  const getRandomInt = (max) => {
+    return Math.floor(Math.random() * (max - 1)) + 1;
+  };
+
   const SmallIconButton = (Icon) => (
     <IconButton size="small">
       <Icon />
@@ -45,6 +51,30 @@ function MailList() {
           selected={false}
         />
         <Section Icon={PeopleOutlinedIcon} title={"Social"} selected={false} />
+      </div>
+      <div className="maillist-rows">
+        <EmailRow
+          id={""}
+          sender={new LoremIpsum().generateWords(getRandomInt(7))}
+          subject={new LoremIpsum().generateWords(getRandomInt(7))}
+          content={new LoremIpsum().generateWords(getRandomInt(10))}
+          time={"10:36 AM"}
+        />
+        <EmailRow
+          id={""}
+          sender={new LoremIpsum().generateWords(getRandomInt(7))}
+          subject={new LoremIpsum().generateWords(getRandomInt(7))}
+          content={new LoremIpsum().generateWords(getRandomInt(50))}
+          time={"10:36 AM"}
+        />
+        <EmailRow
+          id={""}
+          sender={new LoremIpsum().generateWords(getRandomInt(7))}
+          subject={new LoremIpsum().generateWords(getRandomInt(7))}
+          content={new LoremIpsum().generateWords(getRandomInt(100))}
+          time={"10:36 AM"}
+          unread={true}
+        />
       </div>
     </div>
   );

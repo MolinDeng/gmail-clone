@@ -5,7 +5,7 @@ import Header from "./Header";
 import Navi from "./Navi";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import MailList from "./MailList";
-import SingleMail from "./SingleMail";
+import SingleMailPage from "./SingleMailPage";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
             <div className="app-inner">
               <Routes>
                 <Route path="/" element={<MailList />} />
-                <Route path="/mail" element={<SingleMail />} />
+                <Route path="/mail" element={<SingleMailPage />} />
               </Routes>
             </div>
           </div>
