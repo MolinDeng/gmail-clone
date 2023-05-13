@@ -24,4 +24,8 @@
   margin-top: 0;
   margin-right: 20px;
   margin-bottom: 20px;
+
+  height: calc(100vh - 89px);
+  /* ! 100% - 205px is different from 100vh - 205px */
+  /* ! to scroll, one of parent div must have height property */
 }

@@ -15,6 +15,8 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardIcon from "@mui/icons-material/Keyboard";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import PrintOutlinedIcon from "@mui/icons-material/PrintOutlined";
+import OpenInNewOutlinedIcon from "@mui/icons-material/OpenInNewOutlined";
 import { useNavigate } from "react-router-dom";
 
 function SingleMailPage() {
@@ -47,7 +49,9 @@ function SingleMailPage() {
         </div>
       </div>
       <div className="mail-main">
-        <h1>Test</h1>
+        <h1>Title</h1>
+        {SmallIconButton(PrintOutlinedIcon)}
+        {SmallIconButton(OpenInNewOutlinedIcon)}
       </div>
     </div>
   );
