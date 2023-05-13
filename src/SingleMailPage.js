@@ -1,6 +1,6 @@
 import React from "react";
 import "./SingleMailPage.css";
-import { Button, IconButton } from "@mui/material";
+import { Avatar, Button, IconButton } from "@mui/material";
 import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
 import ReportOutlinedIcon from "@mui/icons-material/ReportOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
@@ -21,6 +21,8 @@ import { useNavigate } from "react-router-dom";
 import { LoremIpsum } from "lorem-ipsum";
 import TurnLeftIcon from "@mui/icons-material/TurnLeft";
 import TurnRightIcon from "@mui/icons-material/TurnRight";
+import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
+import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
 
 function SingleMailPage() {
   const lorem = new LoremIpsum();
@@ -59,14 +61,30 @@ function SingleMailPage() {
         <div className="mail-main-scroll">
           <div className="mail-title">
             <h1>{lorem.generateWords(2)}</h1>
-            {SmallIconButton(PrintOutlinedIcon)}
-            {SmallIconButton(OpenInNewOutlinedIcon)}
+            <div className="mail-title-right">
+              {SmallIconButton(PrintOutlinedIcon)}
+              {SmallIconButton(OpenInNewOutlinedIcon)}
+            </div>
           </div>
           <div className="mail-sender">
-            <p>
-              {lorem.generateWords(1)}
-              {"@gmail.com"}
-            </p>
+            <div className="mail-sender-left">
+              <Avatar />
+              <p>
+                {"<"}
+                {lorem.generateWords(1)}
+                {"@gmail.com"}
+                {">"}
+                <br />
+                to me
+                {SmallIconButton(ArrowDropDownRoundedIcon)}
+              </p>
+            </div>
+            <div className="mail-sender-right">
+              <p>10:45 AM</p>
+              {SmallIconButton(StarBorderOutlinedIcon)}
+              {SmallIconButton(TurnLeftIcon)}
+              {SmallIconButton(MoreVertOutlinedIcon)}
+            </div>
           </div>
           <div className="mail-content">
             <p>{lorem.generateParagraphs(20)}</p>

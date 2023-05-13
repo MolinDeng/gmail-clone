@@ -9,10 +9,11 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 10px 14px 10px 10px;
+  margin: 10px 34px 10px 10px;
 }
 .mail-tools-left .MuiButtonBase-root:first-child {
-  margin-right: 20px !important;
+  margin-left: 5px !important;
+  margin-right: 30px !important;
 }
 .mail-tools-icon {
   color: #5a5d5c !important;
@@ -24,11 +25,46 @@
   margin: 20px 40px 0px 80px;
 }
 .mail-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.mail-title > h1 {
+  font-weight: 200;
 }
 .mail-sender {
+  margin-bottom: 20px;
+}
+.mail-sender,
+.mail-sender-left,
+.mail-sender-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #454847 !important;
+}
+.mail-sender-left > p {
+  line-height: 2px;
+  margin-top: 15px;
+  margin-left: 20px;
+  font-size: 13px;
+}
+.mail-sender-left > p > .MuiButtonBase-root {
+  margin-left: -5px;
+}
+.mail-sender-right > p {
+  text-align: center;
+  font-size: 13px;
+  margin-right: 20px;
+}
+.mail-sender-right .MuiButtonBase-root {
+  margin-left: 5px !important;
 }
 .mail-content {
-  background-color: #f3f2f0;
+  /* background-color: #f3f2f0; */
+  box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.24);
+  padding: 20px;
 }
 .mail-bottom {
   margin-top: 40px;
