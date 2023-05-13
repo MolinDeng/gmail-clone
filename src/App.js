@@ -6,8 +6,12 @@ import Navi from "./Navi";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MailList from "./MailList";
 import SingleMailPage from "./SingleMailPage";
+import Draft from "./Draft";
+import { useSelector } from "react-redux";
+import { selectDraft } from "./features/draftSlice";
 
 function App() {
+  const draftOpen = useSelector(selectDraft);
   return (
     <div className="app">
       <Leftbar />
@@ -25,6 +29,8 @@ function App() {
           </div>
         </div>
       </div>
+      {draftOpen && <Draft />}
+      <Draft />
     </div>
   );
 }

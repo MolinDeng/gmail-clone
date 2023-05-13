@@ -1,0 +1,60 @@
+textarea {
+  resize: none;
+}
+textarea:invalid {
+  /* border: 2px dashed red; */
+}
+
+textarea:valid {
+  /* border: 2px solid lime; */
+}
+.MuiButtonBase-root {
+  color: #454847 !important;
+}
+.draft {
+  position: absolute;
+  bottom: 0px;
+  right: 40px;
+  border-radius: 15px;
+  box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.24);
+}
+
+.draft-header {
+  background-color: #f2f6fb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  padding: 10px 10px 10px 20px;
+}
+.draft-header > h3 {
+  font-size: 14px;
+  font-weight: 400;
+}
+.draft-header-right .icon-button {
+  zoom: 80%;
+}
+.draft-form {
+  display: grid;
+  grid-template-rows: auto auto 400px;
+  grid-template-columns: 500px;
+}
+.draft-form > input {
+  /* border: none; */
+}
+.draft-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+  margin-bottom: 20px;
+}
+.draft-bottom-send {
+  background-color: #0858d0 !important;
+  text-transform: capitalize !important;
+  border-radius: 20px !important;
+  color: white !important;
+  width: 80px !important;
+  margin: 0 10px 0 10px !important;
+}

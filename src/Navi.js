@@ -22,11 +22,25 @@ import ReportGmailerrorredOutlinedIcon from "@mui/icons-material/ReportGmailerro
 import ReportIcon from "@mui/icons-material/Report";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import { useDispatch, useSelector } from "react-redux";
+import { closeDraft, openDraft, selectDraft } from "./features/draftSlice";
 
 function Navi() {
+  const draftOpen = useSelector(selectDraft);
+  const dispatch = useDispatch();
+  const onClickCompose = (e) => {
+    console.log(draftOpen);
+    if (!draftOpen) {
+      dispatch(openDraft);
+    } else {
+      dispatch(closeDraft);
+    }
+  };
+
   return (
     <div className="navi">
       <Button
+        onClick={onClickCompose}
         className="navi-compose"
         startIcon={<CreateOutlinedIcon fontSize="large" />}>
         <p>Compose</p>
