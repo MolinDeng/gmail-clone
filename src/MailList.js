@@ -35,7 +35,7 @@ function MailList() {
 
   const SmallIconButton = (Icon) => (
     <IconButton size="small">
-      <Icon />
+      <Icon fontSize="small" />
     </IconButton>
   );
 
@@ -43,7 +43,7 @@ function MailList() {
     <div className="maillist">
       <div className="maillist-settings">
         <div className="maillist-settings-left">
-          <Checkbox />
+          <Checkbox size="small" />
           {SmallIconButton(ArrowDropDownIcon)}
           {SmallIconButton(RefreshIcon)}
           {SmallIconButton(MoreVertIcon)}

@@ -1,0 +1,19 @@
+.mail-page {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.mail-tools {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 14px 10px 10px;
+}
+.mail-tools-left .MuiButtonBase-root:first-child {
+  margin-right: 10px !important;
+}
+.mail-tools-icon {
+  color: #5a5d5c !important;
+}

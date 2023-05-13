@@ -9,7 +9,7 @@ import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
 function Leftbar() {
   const createIcon = (Icon, title, selected) => (
     <div className={`leftbar-option${selected ? "-active" : ""}`}>
-      <IconButton className="leftbar-option-button">
+      <IconButton size="small" className="leftbar-option-button">
         <div className="leftbar-option-icon-conatainer">
           <Icon fontSize="small" className="leftbar-option-icon" />
         </div>

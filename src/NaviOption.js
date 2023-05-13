@@ -4,9 +4,9 @@ function NaviOption({ Icon, IconSelected, title, number, selected }) {
   return (
     <div className={`navi-option${selected ? "-active" : ""}`}>
       {selected ? (
-        <IconSelected className="navi-option-icon" />
+        <IconSelected fontSize="small" className="navi-option-icon" />
       ) : (
-        <Icon className="navi-option-icon" />
+        <Icon fontSize="small" className="navi-option-icon" />
       )}
 
       <p className="navi-option-title">{title}</p>
