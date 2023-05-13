@@ -2,8 +2,6 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-
-  overflow: scroll;
 }
 
 .maillist-settings {
@@ -41,5 +39,7 @@
 .maillist-rows {
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  overflow-y: scroll;
+  height: 400px;
+  /* ! TODO */
 }

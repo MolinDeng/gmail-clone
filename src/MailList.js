@@ -20,6 +20,18 @@ function MailList() {
   const getRandomInt = (max) => {
     return Math.floor(Math.random() * (max - 1)) + 1;
   };
+  const lorem = new LoremIpsum();
+
+  const data = new Array();
+  for (let i = 0; i < 50; i++)
+    data.push({
+      id: "",
+      sender: lorem.generateWords(getRandomInt(7)),
+      subject: lorem.generateWords(getRandomInt(7)),
+      content: lorem.generateWords(getRandomInt(50)),
+      time: "10:36 AM",
+      unread: getRandomInt(100) > 50,
+    });
 
   const SmallIconButton = (Icon) => (
     <IconButton size="small">
@@ -53,28 +65,16 @@ function MailList() {
         <Section Icon={PeopleOutlinedIcon} title={"Social"} selected={false} />
       </div>
       <div className="maillist-rows">
-        <EmailRow
-          id={""}
-          sender={new LoremIpsum().generateWords(getRandomInt(7))}
-          subject={new LoremIpsum().generateWords(getRandomInt(7))}
-          content={new LoremIpsum().generateWords(getRandomInt(10))}
-          time={"10:36 AM"}
-        />
-        <EmailRow
-          id={""}
-          sender={new LoremIpsum().generateWords(getRandomInt(7))}
-          subject={new LoremIpsum().generateWords(getRandomInt(7))}
-          content={new LoremIpsum().generateWords(getRandomInt(50))}
-          time={"10:36 AM"}
-        />
-        <EmailRow
-          id={""}
-          sender={new LoremIpsum().generateWords(getRandomInt(7))}
-          subject={new LoremIpsum().generateWords(getRandomInt(7))}
-          content={new LoremIpsum().generateWords(getRandomInt(100))}
-          time={"10:36 AM"}
-          unread={true}
-        />
+        {data.map(({ id, sender, subject, content, time, unread }) => (
+          <EmailRow
+            id={id}
+            sender={sender}
+            subject={subject}
+            content={content}
+            time={time}
+            unread={unread}
+          />
+        ))}
       </div>
     </div>
   );

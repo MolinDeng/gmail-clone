@@ -2,10 +2,16 @@ import React from "react";
 import "./EmailRow.css";
 import { Checkbox, IconButton } from "@mui/material";
 import { StarBorderOutlined } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 function EmailRow({ id, sender, subject, content, time, unread }) {
+  // rourte to new a page
+  const navigate = useNavigate();
+  const onClick = (e) => {
+    navigate("/mail");
+  };
   return (
-    <div className="email-row">
+    <div onClick={onClick} className="email-row">
       <div className="email-row-options">
         <Checkbox size="small" />
         <IconButton size="small">

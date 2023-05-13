@@ -9,23 +9,23 @@ import SingleMailPage from "./SingleMailPage";
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="app">
-        <Leftbar />
-        <div className="app-main">
-          <Header />
-          <div className="app-body">
-            <Navi />
-            <div className="app-inner">
+    <div className="app">
+      <Leftbar />
+      <div className="app-main">
+        <Header />
+        <div className="app-body">
+          <Navi />
+          <div className="app-inner">
+            <BrowserRouter>
               <Routes>
                 <Route path="/" element={<MailList />} />
                 <Route path="/mail" element={<SingleMailPage />} />
               </Routes>
-            </div>
+            </BrowserRouter>
           </div>
         </div>
       </div>
-    </BrowserRouter>
+    </div>
   );
 }
 
