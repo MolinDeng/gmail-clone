@@ -3,7 +3,7 @@ import "./App.css";
 import Leftbar from "./Leftbar";
 import Header from "./Header";
 import Navi from "./Navi";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MailList from "./MailList";
 import SingleMailPage from "./SingleMailPage";
 

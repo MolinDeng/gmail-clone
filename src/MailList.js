@@ -17,20 +17,20 @@ import EmailRow from "./EmailRow";
 import { LoremIpsum } from "lorem-ipsum";
 
 function MailList() {
-  const getRandomInt = (max) => {
-    return Math.floor(Math.random() * (max - 1)) + 1;
+  const getRandomInt = (min, max) => {
+    return Math.floor(Math.random() * (max - min)) + min;
   };
   const lorem = new LoremIpsum();
 
-  const data = new Array();
-  for (let i = 0; i < 50; i++)
+  let data = [];
+  for (let i = 0; i < getRandomInt(10, 100); i++)
     data.push({
       id: "",
-      sender: lorem.generateWords(getRandomInt(7)),
-      subject: lorem.generateWords(getRandomInt(7)),
-      content: lorem.generateWords(getRandomInt(50)),
+      sender: lorem.generateWords(getRandomInt(2, 7)),
+      subject: lorem.generateWords(getRandomInt(2, 7)),
+      content: lorem.generateWords(getRandomInt(10, 50)),
       time: "10:36 AM",
-      unread: getRandomInt(100) > 50,
+      unread: getRandomInt(0, 100) > 50,
     });
 
   const SmallIconButton = (Icon) => (
