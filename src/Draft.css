@@ -1,22 +1,24 @@
 textarea {
   resize: none;
 }
-textarea:invalid {
-  /* border: 2px dashed red; */
-}
-
-textarea:valid {
-  /* border: 2px solid lime; */
-}
 .MuiButtonBase-root {
   color: #454847 !important;
 }
 .draft {
+  display: flex;
+  flex-direction: column;
   position: absolute;
   bottom: 0px;
   right: 40px;
-  border-radius: 15px;
-  box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.24);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.24);
+  background-color: white;
+  max-width: 600px;
+  max-height: 600px;
+  /* ! this to property help scale the component resposively*/
+  width: 40%;
+  height: 60%;
 }
 
 .draft-header {
@@ -36,13 +38,27 @@ textarea:valid {
   zoom: 80%;
 }
 .draft-form {
-  display: grid;
-  grid-template-rows: auto auto 400px;
-  grid-template-columns: 500px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px 10px 20px;
+}
+.draft-form > hr {
+  border-top: 1px solid #00000031;
 }
 .draft-form > input {
-  /* border: none; */
+  border: none;
+  /* ! remove the outline when selected */
+  outline: none;
+  height: 30px;
 }
+.draft-form > textarea {
+  flex-grow: 1;
+  padding-top: 10px;
+  outline: none;
+  border: none;
+}
+
 .draft-bottom {
   display: flex;
   align-items: center;

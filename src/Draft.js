@@ -24,16 +24,20 @@ function Draft() {
     <div className="draft">
       <div className="draft-header">
         <h3>New Message</h3>
+
         <div className="draft-header-right">
           {SmallIconButton(MinimizeIcon)}
           {SmallIconButton(OpenInFullIcon)}
           {SmallIconButton(CloseIcon)}
         </div>
       </div>
+
       <form className="draft-form">
-        <input type="text" />
-        <input type="text" />
-        <textarea rows="5" cols="33" required></textarea>
+        <input placeholder="Recipients" type="text" />
+        <hr />
+        <input placeholder="Subject" type="text" />
+        <hr />
+        <textarea placeholder="Message..."></textarea>
       </form>
 
       <div className="draft-bottom">
@@ -44,6 +48,7 @@ function Draft() {
             className="draft-bottom-send">
             Send
           </Button>
+
           {SmallIconButton(FontDownloadOutlinedIcon)}
           {SmallIconButton(AttachFileOutlinedIcon)}
           {SmallIconButton(LinkOutlinedIcon)}
@@ -52,6 +57,7 @@ function Draft() {
           {SmallIconButton(InsertPhotoIcon)}
           {SmallIconButton(MoreVertIcon)}
         </div>
+
         <div className="draft-bottom-right">
           {SmallIconButton(DeleteOutlineIcon)}
         </div>
