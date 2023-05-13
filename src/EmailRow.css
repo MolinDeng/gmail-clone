@@ -17,6 +17,12 @@
 .email-row-options {
   white-space: nowrap;
 }
+.email-row-main {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-start;
+}
 .email-row-sender {
   flex: 0 0 150px;
   white-space: nowrap;
@@ -46,7 +52,7 @@
   color: #63676b;
   font-weight: 300;
   font-size: 14px;
-  margin-left: 5px;
+  margin-left: 2px;
 }
 .email-row-time {
   flex: 0 0 100px;
