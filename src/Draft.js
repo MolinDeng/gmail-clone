@@ -14,7 +14,7 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { closeDraft } from "./features/draftSlice";
+import { closeDraft } from "./features/mailSlice";
 
 function Draft() {
   const dispatch = useDispatch();

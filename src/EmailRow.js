@@ -3,13 +3,27 @@ import "./EmailRow.css";
 import { Checkbox, IconButton } from "@mui/material";
 import { StarBorderOutlined } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setSelectedEmail } from "./features/mailSlice";
 
 function EmailRow({ id, sender, subject, content, time, unread }) {
+  const dispatch = useDispatch();
   // rourte to new a page
   const navigate = useNavigate();
-  const onClick = (e) => {
+  const onClick = () => {
+    dispatch(
+      setSelectedEmail({
+        id: id,
+        sender: sender,
+        subject: subject,
+        content: content,
+        time: time,
+        unread: unread,
+      })
+    );
     navigate("/mail");
   };
+
   return (
     <div className="email-row">
       <div className="email-row-options">

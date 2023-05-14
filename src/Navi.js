@@ -23,7 +23,7 @@ import ReportIcon from "@mui/icons-material/Report";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useDispatch, useSelector } from "react-redux";
-import { closeDraft, openDraft, selectDraft } from "./features/draftSlice";
+import { closeDraft, openDraft, selectDraft } from "./features/mailSlice";
 
 function Navi() {
   const draftOpen = useSelector(selectDraft);

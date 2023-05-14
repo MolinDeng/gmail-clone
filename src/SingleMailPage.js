@@ -18,14 +18,15 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import PrintOutlinedIcon from "@mui/icons-material/PrintOutlined";
 import OpenInNewOutlinedIcon from "@mui/icons-material/OpenInNewOutlined";
 import { useNavigate } from "react-router-dom";
-import { LoremIpsum } from "lorem-ipsum";
 import TurnLeftIcon from "@mui/icons-material/TurnLeft";
 import TurnRightIcon from "@mui/icons-material/TurnRight";
 import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
+import { useSelector } from "react-redux";
+import { selectEmail } from "./features/mailSlice";
 
 function SingleMailPage() {
-  const lorem = new LoremIpsum();
+  const selectedEmail = useSelector(selectEmail);
 
   const navigate = useNavigate();
 
@@ -60,7 +61,7 @@ function SingleMailPage() {
       <div className="mail-main">
         <div className="mail-main-scroll">
           <div className="mail-title">
-            <h1>{lorem.generateWords(2)}</h1>
+            <h1>{selectedEmail.subject}</h1>
             <div className="mail-title-right">
               {SmallIconButton(PrintOutlinedIcon)}
               {SmallIconButton(OpenInNewOutlinedIcon)}
@@ -71,8 +72,7 @@ function SingleMailPage() {
               <Avatar />
               <p>
                 {"<"}
-                {lorem.generateWords(1)}
-                {"@gmail.com"}
+                {selectedEmail.sender}
                 {">"}
                 <br />
                 to me
@@ -80,24 +80,26 @@ function SingleMailPage() {
               </p>
             </div>
             <div className="mail-sender-right">
-              <p>10:45 AM</p>
+              <p>{selectedEmail.time}</p>
               {SmallIconButton(StarBorderOutlinedIcon)}
               {SmallIconButton(TurnLeftIcon)}
               {SmallIconButton(MoreVertOutlinedIcon)}
             </div>
           </div>
           <div className="mail-content">
-            <p>{lorem.generateParagraphs(20)}</p>
+            <p>{selectedEmail.content}</p>
           </div>
           <div className="mail-bottom">
             <Button
               className="mail-bottom-button"
-              startIcon={<TurnLeftIcon fontSize="large" />}>
+              startIcon={<TurnLeftIcon fontSize="large" />}
+            >
               <p>Reply</p>
             </Button>
             <Button
               className="mail-bottom-button"
-              startIcon={<TurnRightIcon fontSize="large" />}>
+              startIcon={<TurnRightIcon fontSize="large" />}
+            >
               <p>Forward</p>
             </Button>
           </div>

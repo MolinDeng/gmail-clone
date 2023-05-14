@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import draftReducer from "../features/draftSlice";
+import mailReducer from "../features/mailSlice";
 import userReducer from "../features/userSlice";
 
 export const store = configureStore({
   reducer: {
-    draft: draftReducer,
+    mail: mailReducer,
     user: userReducer,
   },
 });

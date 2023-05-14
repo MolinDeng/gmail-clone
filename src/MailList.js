@@ -65,9 +65,9 @@ function MailList() {
         <Section Icon={PeopleOutlinedIcon} title={"Social"} selected={false} />
       </div>
       <div className="maillist-rows">
-        {data.map(({ id, sender, subject, content, time, unread }) => (
+        {data.map(({ id, sender, subject, content, time, unread }, index) => (
           <EmailRow
-            key={id} // ! Must have unique key attribute
+            key={index} // ! Must have unique key attribute
             id={id}
             sender={sender}
             subject={subject}

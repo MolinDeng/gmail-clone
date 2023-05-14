@@ -8,11 +8,11 @@ import MailList from "./MailList";
 import SingleMailPage from "./SingleMailPage";
 import Draft from "./Draft";
 import { useSelector } from "react-redux";
-import { selectDraft } from "./features/draftSlice";
+import { selectDraft } from "./features/mailSlice";
 
 function App() {
   const draftOpen = useSelector(selectDraft);
-  console.log(draftOpen);
+
   return (
     <div className="app">
       <Leftbar />
