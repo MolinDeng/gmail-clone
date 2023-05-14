@@ -28,12 +28,12 @@ import { closeDraft, openDraft, selectDraft } from "./features/draftSlice";
 function Navi() {
   const draftOpen = useSelector(selectDraft);
   const dispatch = useDispatch();
+
   const onClickCompose = (e) => {
-    console.log(draftOpen);
     if (!draftOpen) {
-      dispatch(openDraft);
+      dispatch(openDraft()); // ! we have to call the action, dispatch(openDraft) won't work
     } else {
-      dispatch(closeDraft);
+      dispatch(closeDraft());
     }
   };
 
@@ -42,7 +42,8 @@ function Navi() {
       <Button
         onClick={onClickCompose}
         className="navi-compose"
-        startIcon={<CreateOutlinedIcon fontSize="large" />}>
+        startIcon={<CreateOutlinedIcon fontSize="large" />}
+      >
         <p>Compose</p>
       </Button>
       <NaviOption

@@ -12,6 +12,7 @@ import { selectDraft } from "./features/draftSlice";
 
 function App() {
   const draftOpen = useSelector(selectDraft);
+  console.log(draftOpen);
   return (
     <div className="app">
       <Leftbar />
@@ -30,7 +31,6 @@ function App() {
         </div>
       </div>
       {draftOpen && <Draft />}
-      <Draft />
     </div>
   );
 }

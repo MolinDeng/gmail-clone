@@ -67,7 +67,7 @@ function MailList() {
       <div className="maillist-rows">
         {data.map(({ id, sender, subject, content, time, unread }) => (
           <EmailRow
-            key={id} // ! Must have key attribute
+            key={id} // ! Must have unique key attribute
             id={id}
             sender={sender}
             subject={subject}
