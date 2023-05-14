@@ -8,11 +8,26 @@ import AppsRoundedIcon from "@mui/icons-material/AppsRounded";
 import SettingsIcon from "@mui/icons-material/Settings";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import { signOut } from "firebase/auth";
+import { auth } from "./firebase";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { closeDraft } from "./features/mailSlice";
 
 function Header() {
-  const rightIcon = (Icon) => (
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const logoutApp = () => {
+    dispatch(closeDraft()); // * close draft component
+    signOut(auth).then(() => {
+      navigate("/");
+    });
+  };
+
+  const rightIcon = (Icon, onClick) => (
     <div className="header-settings-icon">
-      <IconButton>
+      <IconButton onClick={onClick}>
         <Icon />
       </IconButton>
     </div>
@@ -38,10 +53,11 @@ function Header() {
             <p>Active</p>
             <ArrowDropDownIcon />
           </Button>
-
           {rightIcon(HelpOutlineOutlinedIcon)}
           {rightIcon(SettingsIcon)}
           {rightIcon(AppsRoundedIcon)}
+          {rightIcon(ExitToAppIcon, logoutApp)}
+
           <Avatar className="header-settings-avatar" />
         </div>
       </div>
