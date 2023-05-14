@@ -25,7 +25,7 @@ function MailList() {
   let data = [];
   for (let i = 0; i < getRandomInt(10, 100); i++)
     data.push({
-      id: "",
+      id: i,
       sender: lorem.generateWords(getRandomInt(2, 7)),
       subject: lorem.generateWords(getRandomInt(2, 7)),
       content: lorem.generateWords(getRandomInt(10, 50)),
@@ -67,6 +67,7 @@ function MailList() {
       <div className="maillist-rows">
         {data.map(({ id, sender, subject, content, time, unread }) => (
           <EmailRow
+            key={id} // ! Must have key attribute
             id={id}
             sender={sender}
             subject={subject}
