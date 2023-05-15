@@ -15,8 +15,8 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { closeDraft, selectEmail } from "./features/mailSlice";
-import { Timestamp, addDoc, collection } from "firebase/firestore";
-import { db } from "./firebase";
+import { Timestamp, addDoc } from "firebase/firestore";
+import { colRef } from "./firebase";
 import { selectUser } from "./features/userSlice";
 
 function Draft() {
@@ -39,9 +39,9 @@ function Draft() {
 
   // * onSubmit form
   const onSubmit = (formData) => {
-    const colRef = collection(db, formData.to.split("@")[0]);
     addDoc(colRef, {
       sender: account.email,
+      to: formData.to,
       subject: formData.sub,
       content: formData.msg,
       time: Timestamp.now().toDate().toDateString(),

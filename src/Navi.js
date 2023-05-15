@@ -60,6 +60,13 @@ function Navi() {
         selected={true}
       />
       <NaviOption
+        Icon={SendOutlinedIcon}
+        IconSelected={SendIcon}
+        title="Sent"
+        number={0}
+        selected={false}
+      />
+      <NaviOption
         Icon={StarBorderOutlinedIcon}
         IconSelected={StarIcon}
         title="Starred"
@@ -80,13 +87,7 @@ function Navi() {
         number={0}
         selected={false}
       />
-      <NaviOption
-        Icon={SendOutlinedIcon}
-        IconSelected={SendIcon}
-        title="Sent"
-        number={0}
-        selected={false}
-      />
+
       <NaviOption
         Icon={ScheduleSendOutlinedIcon}
         IconSelected={ScheduleSendIcon}

@@ -9,7 +9,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import { db } from "./firebase";
 import { selectUser } from "./features/userSlice";
 
-function EmailRow({ uid, sender, subject, content, time, unread }) {
+function EmailRow({ uid, sender, to, subject, content, time, unread }) {
   const dispatch = useDispatch();
   // rourte to new a page
   const navigate = useNavigate();
@@ -25,6 +25,7 @@ function EmailRow({ uid, sender, subject, content, time, unread }) {
       setSelectedEmail({
         uid: uid,
         sender: sender,
+        to: to,
         subject: subject,
         content: content,
         time: time,

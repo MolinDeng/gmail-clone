@@ -4,14 +4,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { auth, db } from "./firebase";
-import {
-  addDoc,
-  collection,
-  Timestamp,
-  writeBatch,
-  doc,
-} from "firebase/firestore";
+import { auth, colRef, db } from "./firebase";
+import { addDoc, Timestamp, writeBatch, doc } from "firebase/firestore";
 import GoogleIcon from "@mui/icons-material/Google";
 import { useForm } from "react-hook-form";
 import { Button } from "@mui/material";
@@ -31,9 +25,9 @@ function Login() {
     } else {
       createUserWithEmailAndPassword(auth, email, pw)
         .then(() => {
-          const colRef = collection(db, data.user);
           addDoc(colRef, {
             sender: "demo@gcmail.com",
+            to: email,
             subject: "Welcome to Gmail clone",
             content: "Welcome to Gmail clone! Hope you have a nice day 😊",
             time: Timestamp.now().toDate().toDateString(),
@@ -99,7 +93,6 @@ function Login() {
             createUserWithEmailAndPassword(auth, "demo@gcmail.com", "123456")
               .then(() => {
                 // ! test code: generate random mail list
-                const colRef = collection(db, "demo");
                 const batch = writeBatch(db);
 
                 testdata.forEach((mail) => {

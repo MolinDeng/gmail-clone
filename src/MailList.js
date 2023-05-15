@@ -12,18 +12,21 @@ import InboxIcon from "@mui/icons-material/Inbox";
 import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import EmailRow from "./EmailRow";
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import { onSnapshot, orderBy, query, where } from "firebase/firestore";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "./features/userSlice";
-import { db } from "./firebase";
+import { colRef } from "./firebase";
 import { setUnread } from "./features/mailSlice";
 
 function MailList() {
   const account = useSelector(selectUser);
   const dispatch = useDispatch();
   const [emails, setEmails] = useState([]);
-  const colRef = collection(db, account.userName);
-  const q = query(colRef, orderBy("createAt", "desc"));
+  const q = query(
+    colRef,
+    where("to", "==", account.email),
+    orderBy("createAt", "desc")
+  );
   //create a real-time listener to firebase
   useEffect(() => {
     onSnapshot(
@@ -79,6 +82,7 @@ function MailList() {
             key={id} // ! Must have unique key attribute
             uid={id}
             sender={data.sender}
+            to={data.to}
             subject={data.subject}
             content={data.content}
             time={data.time}
