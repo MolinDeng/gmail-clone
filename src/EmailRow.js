@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedEmail } from "./features/mailSlice";
 import { doc, updateDoc } from "firebase/firestore";
-import { db } from "./firebase";
+import { colRef, db } from "./firebase";
 import { selectUser } from "./features/userSlice";
 
 function EmailRow({ uid, sender, to, subject, content, time, unread }) {
@@ -18,7 +18,7 @@ function EmailRow({ uid, sender, to, subject, content, time, unread }) {
   const onClick = () => {
     // * set this emial read
     if (unread) {
-      const docRef = doc(db, accout.userName, uid);
+      const docRef = doc(colRef, uid);
       updateDoc(docRef, { unread: false });
     }
     dispatch(
