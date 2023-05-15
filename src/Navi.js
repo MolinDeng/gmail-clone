@@ -23,10 +23,16 @@ import ReportIcon from "@mui/icons-material/Report";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useDispatch, useSelector } from "react-redux";
-import { closeDraft, openDraft, selectDraft } from "./features/mailSlice";
+import {
+  closeDraft,
+  openDraft,
+  selectDraft,
+  selectUnreadNum,
+} from "./features/mailSlice";
 
 function Navi() {
   const draftOpen = useSelector(selectDraft);
+  const unreadNum = useSelector(selectUnreadNum);
   const dispatch = useDispatch();
 
   const onClickCompose = (e) => {
@@ -50,7 +56,7 @@ function Navi() {
         Icon={InboxOutlinedIcon}
         IconSelected={InboxRoundedIcon}
         title="Inbox"
-        number={2}
+        number={unreadNum}
         selected={true}
       />
       <NaviOption

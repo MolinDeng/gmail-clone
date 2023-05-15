@@ -27,7 +27,6 @@ import { selectEmail } from "./features/mailSlice";
 
 function SingleMailPage() {
   const selectedEmail = useSelector(selectEmail);
-
   const navigate = useNavigate();
 
   const SmallIconButton = (Icon, onClick) => (

@@ -3,18 +3,22 @@ import "./EmailRow.css";
 import { Checkbox, IconButton } from "@mui/material";
 import { StarBorderOutlined } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSelectedEmail } from "./features/mailSlice";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "./firebase";
+import { selectUser } from "./features/userSlice";
 
-function EmailRow({ id, sender, subject, content, time, unread }) {
+function EmailRow({ uid, sender, subject, content, time, unread }) {
   const dispatch = useDispatch();
   // rourte to new a page
   const navigate = useNavigate();
+  const accout = useSelector(selectUser);
 
-  const onClick = () => {
+  const openEmail = () => {
     dispatch(
       setSelectedEmail({
-        id: id,
+        uid: uid,
         sender: sender,
         subject: subject,
         content: content,
@@ -23,6 +27,13 @@ function EmailRow({ id, sender, subject, content, time, unread }) {
       })
     );
     navigate("/mail");
+  };
+  const onClick = () => {
+    // * set this emial read
+    if (unread) {
+      const docRef = doc(db, accout.userName, uid);
+      updateDoc(docRef, { unread: false }).then(openEmail);
+    } else openEmail();
   };
 
   return (
