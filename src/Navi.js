@@ -123,8 +123,8 @@ function Navi() {
       >
         <p>Compose</p>
       </Button>
-      {naviList.map((data) => (
-        <NaviOption {...data} />
+      {naviList.map((data, index) => (
+        <NaviOption key={index} {...data} id={index} />
       ))}
     </div>
   );

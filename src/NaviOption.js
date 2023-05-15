@@ -1,8 +1,12 @@
 import React from "react";
 import "./NaviOption.css";
-function NaviOption({ Icon, IconSelected, title, number, selected }) {
+function NaviOption({ id, Icon, IconSelected, title, number, selected }) {
+  const onClick = () => {};
   return (
-    <div className={`navi-option${selected ? "-active" : ""}`}>
+    <div
+      onClick={onClick}
+      className={`navi-option${selected ? "-active" : ""}`}
+    >
       {selected ? (
         <IconSelected fontSize="small" className="navi-option-icon" />
       ) : (
