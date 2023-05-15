@@ -6,6 +6,8 @@ const initialState = {
   unreadNum: 0,
   naviIndex: 0,
 };
+if (JSON.parse(localStorage.getItem("naviIndex")))
+  initialState.naviIndex = JSON.parse(localStorage.getItem("naviIndex"));
 
 export const mailSlice = createSlice({
   name: "mail",
@@ -32,6 +34,7 @@ export const mailSlice = createSlice({
       state.unreadNum -= 1;
     },
     setNaviIndex: (state, action) => {
+      localStorage.setItem("naviIndex", JSON.stringify(action.payload));
       state.naviIndex = action.payload;
     },
   },

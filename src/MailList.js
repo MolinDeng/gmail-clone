@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./MailList.css";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import RefreshIcon from "@mui/icons-material/Refresh";
@@ -12,45 +12,13 @@ import InboxIcon from "@mui/icons-material/Inbox";
 import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import EmailRow from "./EmailRow";
-import { onSnapshot, orderBy, query, where } from "firebase/firestore";
-import { useDispatch, useSelector } from "react-redux";
-import { selectUser } from "./features/userSlice";
-import { colRef } from "./firebase";
-import { setUnread } from "./features/mailSlice";
 
-function MailList() {
-  const account = useSelector(selectUser);
-  const dispatch = useDispatch();
-  const [emails, setEmails] = useState([]);
-  const q = query(
-    colRef,
-    where("to", "==", account.email),
-    orderBy("createAt", "desc")
-  );
-  //create a real-time listener to firebase
-  useEffect(() => {
-    onSnapshot(
-      q,
-      (snapshot) => {
-        let arr = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          data: doc.data(),
-        }));
-        dispatch(setUnread(arr.filter((d) => d.data.unread === true).length));
-        setEmails(arr);
-      },
-      (err) => {
-        alert(err.message);
-      }
-    );
-  }, [q, dispatch]);
-
+function MailList({ naviIndex, emails }) {
   const SmallIconButton = (Icon) => (
     <IconButton size="small">
       <Icon fontSize="small" />
     </IconButton>
   );
-
   return (
     <div className="maillist">
       <div className="maillist-settings">
@@ -81,12 +49,13 @@ function MailList() {
           <EmailRow
             key={id} // ! Must have unique key attribute
             uid={id}
+            displayWho={naviIndex === 0 ? data.sender : data.to}
             sender={data.sender}
             to={data.to}
             subject={data.subject}
             content={data.content}
             time={data.time}
-            unread={data.unread}
+            unread={naviIndex === 0 && data.unread}
           />
         ))}
       </div>

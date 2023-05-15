@@ -2,6 +2,7 @@ import React from "react";
 import "./NaviOption.css";
 import { useDispatch } from "react-redux";
 import { setNaviIndex } from "./features/mailSlice";
+import { useNavigate } from "react-router-dom";
 function NaviOption({
   index,
   Icon,
@@ -12,9 +13,11 @@ function NaviOption({
   disableClick,
 }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const onClick = () => {
     if (disableClick) return;
     dispatch(setNaviIndex(index));
+    navigate(index === 0 ? "inbox" : "sent");
   };
   return (
     <div

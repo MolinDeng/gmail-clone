@@ -8,7 +8,16 @@ import { setSelectedEmail } from "./features/mailSlice";
 import { doc, updateDoc } from "firebase/firestore";
 import { colRef } from "./firebase";
 
-function EmailRow({ uid, sender, to, subject, content, time, unread }) {
+function EmailRow({
+  uid,
+  displayWho,
+  sender,
+  to,
+  subject,
+  content,
+  time,
+  unread,
+}) {
   const dispatch = useDispatch();
   // rourte to new a page
   const navigate = useNavigate();
@@ -43,7 +52,7 @@ function EmailRow({ uid, sender, to, subject, content, time, unread }) {
       </div>
       <div onClick={onClick} className="email-row-main">
         <h4 className={`email-row-sender${unread ? " unread" : ""}`}>
-          {sender}
+          {displayWho}
         </h4>
         <h4 className={`email-row-sub${unread ? " unread" : ""}`}>
           {subject}{" "}

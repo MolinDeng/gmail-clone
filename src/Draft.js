@@ -73,7 +73,13 @@ function Draft() {
 
       <form className="draft-form" onSubmit={handleSubmit(onSubmit)}>
         <input
-          {...register("to", { value: selectedEmail && selectedEmail.sender })}
+          {...register("to", {
+            value:
+              selectedEmail &&
+              (selectedEmail.sender === account.email
+                ? selectedEmail.to
+                : selectedEmail.sender),
+          })}
           placeholder="Recipient"
           type="email"
           // multiple // ! enable this when building real app

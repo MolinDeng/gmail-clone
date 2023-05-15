@@ -86,7 +86,11 @@ function SingleMailPage() {
                   {">"}
                 </p>
                 <div className="down">
-                  <p>to me</p>
+                  <p>
+                    sent to {"<"}
+                    {selectedEmail.to}
+                    {">"}
+                  </p>
                   <ArrowDropDownRoundedIcon fontSize="small" />
                 </div>
               </div>

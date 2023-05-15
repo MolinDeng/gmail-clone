@@ -67,6 +67,7 @@ function Navi() {
       title: "Starred",
       number: 0,
       index: 2,
+      disableClick: true,
     },
     {
       Icon: AccessTimeOutlinedIcon,
@@ -74,6 +75,7 @@ function Navi() {
       title: "Snoozed",
       number: 0,
       index: 3,
+      disableClick: true,
     },
     {
       Icon: LabelOutlinedIcon,
@@ -81,6 +83,7 @@ function Navi() {
       title: "Important",
       number: 0,
       index: 4,
+      disableClick: true,
     },
     {
       Icon: ScheduleSendOutlinedIcon,
@@ -88,6 +91,7 @@ function Navi() {
       title: "Scheduled",
       number: 0,
       index: 5,
+      disableClick: true,
     },
     {
       Icon: TextSnippetOutlinedIcon,
@@ -95,6 +99,7 @@ function Navi() {
       title: "Draft",
       number: 0,
       index: 6,
+      disableClick: true,
     },
     {
       Icon: ReportGmailerrorredOutlinedIcon,
@@ -102,6 +107,7 @@ function Navi() {
       title: "Spam",
       number: 0,
       index: 7,
+      disableClick: true,
     },
     {
       Icon: DeleteOutlineIcon,
@@ -109,6 +115,7 @@ function Navi() {
       title: "Trash",
       number: 0,
       index: 8,
+      disableClick: true,
     },
     {
       Icon: ExpandMoreIcon,
