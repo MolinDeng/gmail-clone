@@ -4,11 +4,20 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { auth } from "./firebase";
+import { auth, db } from "./firebase";
+import {
+  addDoc,
+  collection,
+  serverTimestamp,
+  writeBatch,
+  doc,
+} from "firebase/firestore";
 import GoogleIcon from "@mui/icons-material/Google";
 import { useForm } from "react-hook-form";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { testdata } from "./testdata";
+
 function Login({ isRegister }) {
   // ! useForm
   const { register, handleSubmit } = useForm();
@@ -16,24 +25,28 @@ function Login({ isRegister }) {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    const email = data.email + "@gcmail.com";
+    const email = data.user + "@gcmail.com";
     const pw = data.password;
     if (!isRegister) {
       signInWithEmailAndPassword(auth, email, pw)
         .then(() => {
           navigate("/");
         })
-        .catch((err) => {
-          alert(err);
-        });
+        .catch((err) => alert(err));
     } else {
       createUserWithEmailAndPassword(auth, email, pw)
         .then(() => {
           navigate("/");
+          const colRef = collection(db, data.user);
+          addDoc(colRef, {
+            sender: "Admin",
+            subject: "Welcome to Gmail clone",
+            content: "Welcome to Gmail clone! Hope you have a nice day 😊",
+            time: serverTimestamp(),
+            unread: true,
+          });
         })
-        .catch((err) => {
-          alert(err);
-        });
+        .catch((err) => alert(err));
     }
   };
 
@@ -47,10 +60,10 @@ function Login({ isRegister }) {
         <GoogleIcon color="primary" />
         <h1> cmail</h1>
       </div>
-      <form action="POST" onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="login-email-input">
           <input
-            {...register("email")}
+            {...register("user")}
             placeholder="Email"
             type="text"
             minLength={2}
@@ -89,12 +102,29 @@ function Login({ isRegister }) {
         <span
           className="login-register"
           onClick={() => {
-            signInWithEmailAndPassword(auth, "demo@gcmail.com", "123456")
+            createUserWithEmailAndPassword(auth, "demo@gcmail.com", "123456")
               .then(() => {
                 navigate("/");
+                // ! test code: generate random mail list
+                const colRef = collection(db, "demo");
+                const batch = writeBatch(db);
+
+                testdata.forEach((mail) => {
+                  let docRef = doc(colRef); //automatically generate unique id
+                  batch.set(docRef, mail);
+                });
+                batch.commit();
               })
               .catch((err) => {
-                alert(err);
+                if (err.code === "auth/email-already-in-use")
+                  signInWithEmailAndPassword(
+                    auth,
+                    "demo@gcmail.com",
+                    "123456"
+                  ).catch((error) => alert(error));
+                else {
+                  alert(err);
+                }
               });
           }}
         >

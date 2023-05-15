@@ -10,6 +10,7 @@ function EmailRow({ id, sender, subject, content, time, unread }) {
   const dispatch = useDispatch();
   // rourte to new a page
   const navigate = useNavigate();
+
   const onClick = () => {
     dispatch(
       setSelectedEmail({

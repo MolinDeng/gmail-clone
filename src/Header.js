@@ -12,12 +12,15 @@ import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { signOut } from "firebase/auth";
 import { auth } from "./firebase";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { closeDraft } from "./features/mailSlice";
+import { selectUser } from "./features/userSlice";
 
 function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const account = useSelector(selectUser);
+
   const logoutApp = () => {
     dispatch(closeDraft()); // * close draft component
     signOut(auth).then(() => {
@@ -58,7 +61,7 @@ function Header() {
           {rightIcon(AppsRoundedIcon)}
           {rightIcon(ExitToAppIcon, logoutApp)}
 
-          <Avatar className="header-settings-avatar" />
+          <Avatar className="header-settings-avatar">{account.email[0]}</Avatar>
         </div>
       </div>
     </div>

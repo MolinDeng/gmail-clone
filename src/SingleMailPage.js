@@ -70,14 +70,17 @@ function SingleMailPage() {
           <div className="mail-sender">
             <div className="mail-sender-left">
               <Avatar />
-              <p>
-                {"<"}
-                {selectedEmail.sender}
-                {">"}
-                <br />
-                to me
-                {SmallIconButton(ArrowDropDownRoundedIcon)}
-              </p>
+              <div className="mail-sender-left-mail">
+                <p className="up">
+                  {"<"}
+                  {selectedEmail.sender}
+                  {">"}
+                </p>
+                <div className="down">
+                  <p>to me</p>
+                  <ArrowDropDownRoundedIcon fontSize="small" />
+                </div>
+              </div>
             </div>
             <div className="mail-sender-right">
               <p>{selectedEmail.time}</p>

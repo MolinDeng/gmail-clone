@@ -44,14 +44,22 @@
   justify-content: space-between;
   color: #454847 !important;
 }
-.mail-sender-left > p {
-  line-height: 2px;
-  margin-top: 15px;
-  margin-left: 20px;
+.mail-sender-left-mail {
+  display: flex;
+  flex-direction: column;
   font-size: 13px;
+  margin-left: 10px;
 }
-.mail-sender-left > p > .MuiButtonBase-root {
-  margin-left: -5px;
+.down {
+  margin-top: 5px;
+  display: flex;
+}
+.down > p {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.down > .MuiSvgIcon-root {
+  zoom: 80%;
 }
 .mail-sender-right > p {
   text-align: center;

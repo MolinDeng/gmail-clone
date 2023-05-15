@@ -63,6 +63,7 @@
 .header-settings-avatar {
   scale: 85%;
   margin-left: 5px;
+  background-color: #c2185b !important;
 }
 
 .header-status-button {

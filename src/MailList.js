@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./MailList.css";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import RefreshIcon from "@mui/icons-material/Refresh";
@@ -10,28 +10,36 @@ import KeyboardIcon from "@mui/icons-material/Keyboard";
 import Section from "./Section";
 import InboxIcon from "@mui/icons-material/Inbox";
 import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
-// import LocalOfferIcon from "@mui/icons-material/LocalOffer";
-// import PeopleIcon from "@mui/icons-material/People";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import EmailRow from "./EmailRow";
-import { LoremIpsum } from "lorem-ipsum";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import { useSelector } from "react-redux";
+import { selectUser } from "./features/userSlice";
+import { db } from "./firebase";
 
 function MailList() {
-  const getRandomInt = (min, max) => {
-    return Math.floor(Math.random() * (max - min)) + min;
-  };
-  const lorem = new LoremIpsum();
+  const account = useSelector(selectUser);
 
-  let data = [];
-  for (let i = 0; i < getRandomInt(10, 100); i++)
-    data.push({
-      id: i,
-      sender: lorem.generateWords(getRandomInt(2, 7)),
-      subject: lorem.generateWords(getRandomInt(2, 7)),
-      content: lorem.generateWords(getRandomInt(10, 50)),
-      time: "10:36 AM",
-      unread: getRandomInt(0, 100) > 50,
-    });
+  const [emails, setEmails] = useState([]);
+  const colRef = collection(db, account.userName);
+  const q = query(colRef, orderBy("time", "desc"));
+  //create a real-time listener to firebase
+  useEffect(() => {
+    onSnapshot(
+      q,
+      (snapshot) => {
+        setEmails(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        );
+      },
+      (err) => {
+        alert(err.message);
+      }
+    );
+  }, [q]);
 
   const SmallIconButton = (Icon) => (
     <IconButton size="small">
@@ -65,15 +73,14 @@ function MailList() {
         <Section Icon={PeopleOutlinedIcon} title={"Social"} selected={false} />
       </div>
       <div className="maillist-rows">
-        {data.map(({ id, sender, subject, content, time, unread }, index) => (
+        {emails.map(({ id, data }) => (
           <EmailRow
-            key={index} // ! Must have unique key attribute
-            id={id}
-            sender={sender}
-            subject={subject}
-            content={content}
-            time={time}
-            unread={unread}
+            key={id} // ! Must have unique key attribute
+            sender={data.sender}
+            subject={data.subject}
+            content={data.content}
+            time={data.time}
+            unread={data.unread}
           />
         ))}
       </div>

@@ -25,6 +25,7 @@ function App() {
         // user signed in
         dispatch(
           login({
+            userName: user.email.split("@")[0],
             email: user.email,
             uid: user.uid,
           })
