@@ -1,7 +1,21 @@
 import React from "react";
 import "./NaviOption.css";
-function NaviOption({ id, Icon, IconSelected, title, number, selected }) {
-  const onClick = () => {};
+import { useDispatch } from "react-redux";
+import { setNaviIndex } from "./features/mailSlice";
+function NaviOption({
+  index,
+  Icon,
+  IconSelected,
+  title,
+  number,
+  selected,
+  disableClick,
+}) {
+  const dispatch = useDispatch();
+  const onClick = () => {
+    if (disableClick) return;
+    dispatch(setNaviIndex(index));
+  };
   return (
     <div
       onClick={onClick}

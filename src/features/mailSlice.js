@@ -4,6 +4,7 @@ const initialState = {
   selectedEmail: JSON.parse(localStorage.getItem("selectedEmail")),
   draftOpen: false,
   unreadNum: 0,
+  naviIndex: 0,
 };
 
 export const mailSlice = createSlice({
@@ -30,6 +31,9 @@ export const mailSlice = createSlice({
     minusUnread: (state) => {
       state.unreadNum -= 1;
     },
+    setNaviIndex: (state, action) => {
+      state.naviIndex = action.payload;
+    },
   },
 });
 
@@ -40,6 +44,7 @@ export const {
   setSelectedEmail,
   openDraft,
   closeDraft,
+  setNaviIndex,
 } = mailSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
@@ -47,5 +52,6 @@ export const {
 export const selectDraft = (state) => state.mail.draftOpen;
 export const selectEmail = (state) => state.mail.selectedEmail;
 export const selectUnreadNum = (state) => state.mail.unreadNum;
+export const selectNaviIndex = (state) => state.mail.naviIndex;
 
 export default mailSlice.reducer;

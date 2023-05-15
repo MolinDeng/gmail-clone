@@ -22,17 +22,20 @@ import ReportGmailerrorredOutlinedIcon from "@mui/icons-material/ReportGmailerro
 import ReportIcon from "@mui/icons-material/Report";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch, useSelector } from "react-redux";
 import {
   closeDraft,
   openDraft,
   selectDraft,
+  selectNaviIndex,
   selectUnreadNum,
 } from "./features/mailSlice";
 
 function Navi() {
   const draftOpen = useSelector(selectDraft);
   const unreadNum = useSelector(selectUnreadNum);
+  const naviIndex = useSelector(selectNaviIndex);
   const dispatch = useDispatch();
 
   const onClickCompose = (e) => {
@@ -49,68 +52,71 @@ function Navi() {
       IconSelected: InboxRoundedIcon,
       title: "Inbox",
       number: unreadNum,
-      selected: true,
+      index: 0,
     },
     {
       Icon: SendOutlinedIcon,
       IconSelected: SendIcon,
       title: "Sent",
       number: 0,
-      selected: false,
+      index: 1,
     },
     {
       Icon: StarBorderOutlinedIcon,
       IconSelected: StarIcon,
       title: "Starred",
       number: 0,
-      selected: false,
+      index: 2,
     },
     {
       Icon: AccessTimeOutlinedIcon,
       IconSelected: AccessTimeFilledIcon,
       title: "Snoozed",
       number: 0,
-      selected: false,
+      index: 3,
     },
     {
       Icon: LabelOutlinedIcon,
       IconSelected: LabelIcon,
       title: "Important",
       number: 0,
-      selected: false,
+      index: 4,
     },
     {
       Icon: ScheduleSendOutlinedIcon,
       IconSelected: ScheduleSendIcon,
       title: "Scheduled",
       number: 0,
-      selected: false,
+      index: 5,
     },
     {
       Icon: TextSnippetOutlinedIcon,
       IconSelected: TextSnippetIcon,
       title: "Draft",
       number: 0,
-      selected: false,
+      index: 6,
     },
     {
       Icon: ReportGmailerrorredOutlinedIcon,
       IconSelected: ReportIcon,
       title: "Spam",
       number: 0,
-      selected: false,
+      index: 7,
     },
     {
       Icon: DeleteOutlineIcon,
+      IconSelected: DeleteIcon,
       title: "Trash",
       number: 0,
-      selected: false,
+      index: 8,
     },
     {
       Icon: ExpandMoreIcon,
+      IconSelected: ExpandMoreIcon,
       title: "More",
       number: 0,
-      selected: false,
+      index: 9,
+      disableClick: true,
     },
   ];
 
@@ -124,7 +130,7 @@ function Navi() {
         <p>Compose</p>
       </Button>
       {naviList.map((data, index) => (
-        <NaviOption key={index} {...data} id={index} />
+        <NaviOption key={index} {...data} selected={naviIndex === index} />
       ))}
     </div>
   );

@@ -3,7 +3,7 @@ import "./App.css";
 import Leftbar from "./Leftbar";
 import Header from "./Header";
 import Navi from "./Navi";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate, BrowserRouter } from "react-router-dom";
 import MailList from "./MailList";
 import SingleMailPage from "./SingleMailPage";
 import Draft from "./Draft";
@@ -25,7 +25,6 @@ function App() {
         // user signed in
         dispatch(
           login({
-            userName: user.email.split("@")[0],
             email: user.email,
             uid: user.uid,
           })
@@ -50,8 +49,19 @@ function App() {
               <Navi />
               <div className="app-inner">
                 <Routes>
-                  <Route path="/" element={<MailList />} />
-                  <Route path="/mail" element={<SingleMailPage />} />
+                  {/* default route to "/inbox" */}
+                  <Route
+                    path="/"
+                    element={<Navigate to="/inbox" replace={true} />}
+                  />
+                  <Route path="inbox" element={<MailList />} />
+                  <Route path="sent" element={<MailList />} />
+                  <Route path="mail" element={<SingleMailPage />} />
+                  {/* default route */}
+                  <Route
+                    path="*"
+                    element={<Navigate to="/" replace={true} />}
+                  />
                 </Routes>
               </div>
             </div>
