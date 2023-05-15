@@ -13,7 +13,7 @@ export const userSlice = createSlice({
       localStorage.setItem("mail_account", JSON.stringify(action.payload));
     },
     logout: (state) => {
-      localStorage.setItem("mail_account", null);
+      localStorage.clear();
       state.account = null;
     },
   },
