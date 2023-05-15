@@ -13,10 +13,14 @@ import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { closeDraft } from "./features/mailSlice";
+import { Timestamp, addDoc, collection } from "firebase/firestore";
+import { db } from "./firebase";
+import { selectUser } from "./features/userSlice";
 
 function Draft() {
+  const account = useSelector(selectUser);
   const dispatch = useDispatch();
   // * small icon button jsx
   const SmallIconButton = (Icon, onClick) => (
@@ -32,8 +36,16 @@ function Draft() {
   } = useForm();
 
   // * onSubmit form
-  const onSubmit = (formData, e) => {
+  const onSubmit = (formData) => {
     console.log(formData);
+    const colRef = collection(db, formData.to.split("@")[0]);
+    addDoc(colRef, {
+      sender: account.email,
+      subject: formData.sub,
+      content: formData.msg,
+      time: Timestamp.now().toDate().toDateString(),
+      unread: true,
+    }).catch((error) => alert(error));
   };
   // * on close draft
   const onClose = () => {
@@ -57,7 +69,7 @@ function Draft() {
           {...register("to")}
           placeholder="Recipients"
           type="email"
-          multiple
+          // multiple // ! enable this when building real app
           required
         />
         <hr />
@@ -98,7 +110,7 @@ function Draft() {
             {SmallIconButton(MoreVertIcon)}
           </div>
 
-          {SmallIconButton(DeleteOutlineIcon)}
+          {SmallIconButton(DeleteOutlineIcon, onClose)}
         </div>
       </form>
     </div>

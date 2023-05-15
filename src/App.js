@@ -38,19 +38,14 @@ function App() {
   }, [dispatch]);
 
   return (
-    <BrowserRouter>
-      <div className="app">
-        {!account ? (
-          <Routes>
-            <Route path="/" element={<Login />} />
-            {/* just for protection */}
-            <Route path="/mail" element={<Login />} />
-            <Route path="register" element={<Login isRegister={true} />} />
-          </Routes>
-        ) : (
-          <>
-            <Leftbar />
-            <div className="app-main">
+    <div className="app">
+      {!account ? (
+        <Login />
+      ) : (
+        <>
+          <Leftbar />
+          <div className="app-main">
+            <BrowserRouter>
               <Header />
               <div className="app-body">
                 <Navi />
@@ -61,12 +56,12 @@ function App() {
                   </Routes>
                 </div>
               </div>
-            </div>
-            {draftOpen && <Draft />}
-          </>
-        )}
-      </div>
-    </BrowserRouter>
+            </BrowserRouter>
+          </div>
+          {draftOpen && <Draft />}
+        </>
+      )}
+    </div>
   );
 }
 

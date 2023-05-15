@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import {
   createUserWithEmailAndPassword,
@@ -8,41 +8,35 @@ import { auth, db } from "./firebase";
 import {
   addDoc,
   collection,
-  serverTimestamp,
+  Timestamp,
   writeBatch,
   doc,
 } from "firebase/firestore";
 import GoogleIcon from "@mui/icons-material/Google";
 import { useForm } from "react-hook-form";
 import { Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import { testdata } from "./testdata";
 
-function Login({ isRegister }) {
+function Login() {
+  const [isRegister, setIsRegister] = useState(false);
+
   // ! useForm
   const { register, handleSubmit } = useForm();
-
-  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     const email = data.user + "@gcmail.com";
     const pw = data.password;
     if (!isRegister) {
-      signInWithEmailAndPassword(auth, email, pw)
-        .then(() => {
-          navigate("/");
-        })
-        .catch((err) => alert(err));
+      signInWithEmailAndPassword(auth, email, pw).catch((err) => alert(err));
     } else {
       createUserWithEmailAndPassword(auth, email, pw)
         .then(() => {
-          navigate("/");
           const colRef = collection(db, data.user);
           addDoc(colRef, {
-            sender: "Admin",
+            sender: "demo@gcmail.com",
             subject: "Welcome to Gmail clone",
             content: "Welcome to Gmail clone! Hope you have a nice day 😊",
-            time: serverTimestamp(),
+            time: Timestamp.now().toDate().toDateString(),
             unread: true,
           });
         })
@@ -68,7 +62,7 @@ function Login({ isRegister }) {
             type="text"
             minLength={2}
             maxLength={20}
-            pattern="[a-zA-Z0-9]+"
+            pattern="[a-z0-9]+[._\-]*[a-z0-9]+"
             required
           />
           <p>@gcmail.com</p>
@@ -90,8 +84,7 @@ function Login({ isRegister }) {
         <span
           className="login-register"
           onClick={() => {
-            if (isRegister) navigate("/");
-            else navigate("/register");
+            setIsRegister(!isRegister);
           }}
         >
           {isRegister ? "Sign In" : "Register Now"}
@@ -104,7 +97,6 @@ function Login({ isRegister }) {
           onClick={() => {
             createUserWithEmailAndPassword(auth, "demo@gcmail.com", "123456")
               .then(() => {
-                navigate("/");
                 // ! test code: generate random mail list
                 const colRef = collection(db, "demo");
                 const batch = writeBatch(db);
