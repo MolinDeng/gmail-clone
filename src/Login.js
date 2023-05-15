@@ -37,6 +37,7 @@ function Login() {
             subject: "Welcome to Gmail clone",
             content: "Welcome to Gmail clone! Hope you have a nice day 😊",
             time: Timestamp.now().toDate().toDateString(),
+            createAt: Timestamp.now(),
             unread: true,
           });
         })

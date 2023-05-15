@@ -12,11 +12,13 @@ const randomDate = (start, end) => {
 const lorem = new LoremIpsum();
 const testdata = [];
 for (let i = 0; i < 30; i++) {
+  const date = randomDate(new Date(2023, 5, 14), new Date());
   testdata.push({
     sender: lorem.generateWords(1) + "@gcmail.com",
     subject: lorem.generateWords(getRandomInt(2, 7)),
     content: lorem.generateParagraphs(getRandomInt(5, 20)),
-    time: randomDate(new Date(2023, 5, 14), new Date()).toDateString(),
+    time: date.toDateString(),
+    createAt: date,
     unread: getRandomInt(0, 100) > 50,
   });
 }

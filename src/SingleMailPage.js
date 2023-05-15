@@ -22,12 +22,22 @@ import TurnLeftIcon from "@mui/icons-material/TurnLeft";
 import TurnRightIcon from "@mui/icons-material/TurnRight";
 import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
 import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
-import { useSelector } from "react-redux";
-import { selectEmail } from "./features/mailSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { openDraft, selectEmail, setSelectedEmail } from "./features/mailSlice";
 
 function SingleMailPage() {
   const selectedEmail = useSelector(selectEmail);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const onReply = () => {
+    dispatch(openDraft());
+  };
+
+  const onReturn = () => {
+    dispatch(setSelectedEmail(null));
+    navigate("/");
+  };
 
   const SmallIconButton = (Icon, onClick) => (
     <IconButton onClick={onClick} size="small">
@@ -39,7 +49,7 @@ function SingleMailPage() {
     <div className="mail-page">
       <div className="mail-tools">
         <div className="mail-tools-left">
-          {SmallIconButton(ArrowBackIcon, (e) => navigate("/"))}
+          {SmallIconButton(ArrowBackIcon, onReturn)}
           {SmallIconButton(ArchiveOutlinedIcon)}
           {SmallIconButton(ReportOutlinedIcon)}
           {SmallIconButton(DeleteOutlinedIcon)}
@@ -93,6 +103,7 @@ function SingleMailPage() {
           </div>
           <div className="mail-bottom">
             <Button
+              onClick={onReply}
               className="mail-bottom-button"
               startIcon={<TurnLeftIcon fontSize="large" />}
             >

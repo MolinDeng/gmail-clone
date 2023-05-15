@@ -42,24 +42,22 @@ function App() {
       {!account ? (
         <Login />
       ) : (
-        <>
+        <BrowserRouter>
           <Leftbar />
           <div className="app-main">
-            <BrowserRouter>
-              <Header />
-              <div className="app-body">
-                <Navi />
-                <div className="app-inner">
-                  <Routes>
-                    <Route path="/" element={<MailList />} />
-                    <Route path="/mail" element={<SingleMailPage />} />
-                  </Routes>
-                </div>
+            <Header />
+            <div className="app-body">
+              <Navi />
+              <div className="app-inner">
+                <Routes>
+                  <Route path="/" element={<MailList />} />
+                  <Route path="/mail" element={<SingleMailPage />} />
+                </Routes>
               </div>
-            </BrowserRouter>
+            </div>
           </div>
           {draftOpen && <Draft />}
-        </>
+        </BrowserRouter>
       )}
     </div>
   );

@@ -23,7 +23,7 @@ function MailList() {
   const dispatch = useDispatch();
   const [emails, setEmails] = useState([]);
   const colRef = collection(db, account.userName);
-  const q = query(colRef, orderBy("time", "desc"));
+  const q = query(colRef, orderBy("createAt", "desc"));
   //create a real-time listener to firebase
   useEffect(() => {
     onSnapshot(

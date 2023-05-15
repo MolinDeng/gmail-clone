@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  selectedEmail: null,
+  selectedEmail: JSON.parse(localStorage.getItem("selectedEmail")),
   draftOpen: false,
   unreadNum: 0,
 };
@@ -19,6 +19,7 @@ export const mailSlice = createSlice({
     },
     setSelectedEmail: (state, action) => {
       state.selectedEmail = action.payload;
+      localStorage.setItem("selectedEmail", JSON.stringify(action.payload));
     },
     setUnread: (state, action) => {
       state.unreadNum = action.payload;

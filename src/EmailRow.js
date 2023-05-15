@@ -15,7 +15,12 @@ function EmailRow({ uid, sender, subject, content, time, unread }) {
   const navigate = useNavigate();
   const accout = useSelector(selectUser);
 
-  const openEmail = () => {
+  const onClick = () => {
+    // * set this emial read
+    if (unread) {
+      const docRef = doc(db, accout.userName, uid);
+      updateDoc(docRef, { unread: false });
+    }
     dispatch(
       setSelectedEmail({
         uid: uid,
@@ -27,13 +32,6 @@ function EmailRow({ uid, sender, subject, content, time, unread }) {
       })
     );
     navigate("/mail");
-  };
-  const onClick = () => {
-    // * set this emial read
-    if (unread) {
-      const docRef = doc(db, accout.userName, uid);
-      updateDoc(docRef, { unread: false }).then(openEmail);
-    } else openEmail();
   };
 
   return (

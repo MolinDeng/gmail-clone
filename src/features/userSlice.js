@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  account: null, // userName: string, email: string, uid: string,
+  account: JSON.parse(localStorage.getItem("mail_account")), // userName: string, email: string, uid: string,
 };
 
 export const userSlice = createSlice({
@@ -10,9 +10,11 @@ export const userSlice = createSlice({
   reducers: {
     login: (state, action) => {
       state.account = action.payload;
+      localStorage.setItem("mail_account", JSON.stringify(action.payload));
     },
     logout: (state) => {
-      state.account = initialState.account;
+      localStorage.setItem("mail_account", null);
+      state.account = null;
     },
   },
 });
