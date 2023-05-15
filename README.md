@@ -16,7 +16,7 @@ This probject was built with
 * [React Router](https://reactrouter.com/en/main/upgrading/v5#upgrade-to-react-router-v6)
 
 ## Features
-* Gmail like UI style
+* Gmail-like, responsive UI style
 * Account Management (register/login/logout)
 * "Inbox" and "Sent" email query
 * Full email viewing
