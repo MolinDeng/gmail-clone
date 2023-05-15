@@ -3,17 +3,15 @@ import "./EmailRow.css";
 import { Checkbox, IconButton } from "@mui/material";
 import { StarBorderOutlined } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setSelectedEmail } from "./features/mailSlice";
 import { doc, updateDoc } from "firebase/firestore";
-import { colRef, db } from "./firebase";
-import { selectUser } from "./features/userSlice";
+import { colRef } from "./firebase";
 
 function EmailRow({ uid, sender, to, subject, content, time, unread }) {
   const dispatch = useDispatch();
   // rourte to new a page
   const navigate = useNavigate();
-  const accout = useSelector(selectUser);
 
   const onClick = () => {
     // * set this emial read
