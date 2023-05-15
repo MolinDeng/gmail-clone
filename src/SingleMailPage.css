@@ -9,7 +9,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 10px 34px 10px 10px;
+  margin: 14px 30px 14px 10px;
 }
 .mail-tools-left .MuiButtonBase-root:first-child {
   margin-left: 5px !important;
