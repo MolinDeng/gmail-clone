@@ -43,6 +43,77 @@ function Navi() {
     }
   };
 
+  const naviList = [
+    {
+      Icon: InboxOutlinedIcon,
+      IconSelected: InboxRoundedIcon,
+      title: "Inbox",
+      number: unreadNum,
+      selected: true,
+    },
+    {
+      Icon: SendOutlinedIcon,
+      IconSelected: SendIcon,
+      title: "Sent",
+      number: 0,
+      selected: false,
+    },
+    {
+      Icon: StarBorderOutlinedIcon,
+      IconSelected: StarIcon,
+      title: "Starred",
+      number: 0,
+      selected: false,
+    },
+    {
+      Icon: AccessTimeOutlinedIcon,
+      IconSelected: AccessTimeFilledIcon,
+      title: "Snoozed",
+      number: 0,
+      selected: false,
+    },
+    {
+      Icon: LabelOutlinedIcon,
+      IconSelected: LabelIcon,
+      title: "Important",
+      number: 0,
+      selected: false,
+    },
+    {
+      Icon: ScheduleSendOutlinedIcon,
+      IconSelected: ScheduleSendIcon,
+      title: "Scheduled",
+      number: 0,
+      selected: false,
+    },
+    {
+      Icon: TextSnippetOutlinedIcon,
+      IconSelected: TextSnippetIcon,
+      title: "Draft",
+      number: 0,
+      selected: false,
+    },
+    {
+      Icon: ReportGmailerrorredOutlinedIcon,
+      IconSelected: ReportIcon,
+      title: "Spam",
+      number: 0,
+      selected: false,
+    },
+    {
+      Icon: DeleteOutlineIcon,
+      title: "Trash",
+      number: 0,
+      selected: false,
+    },
+    {
+      Icon: ExpandMoreIcon,
+      title: "More",
+      number: 0,
+      selected: false,
+    },
+  ];
+
   return (
     <div className="navi">
       <Button
@@ -52,75 +123,9 @@ function Navi() {
       >
         <p>Compose</p>
       </Button>
-      <NaviOption
-        Icon={InboxOutlinedIcon}
-        IconSelected={InboxRoundedIcon}
-        title="Inbox"
-        number={unreadNum}
-        selected={true}
-      />
-      <NaviOption
-        Icon={SendOutlinedIcon}
-        IconSelected={SendIcon}
-        title="Sent"
-        number={0}
-        selected={false}
-      />
-      <NaviOption
-        Icon={StarBorderOutlinedIcon}
-        IconSelected={StarIcon}
-        title="Starred"
-        number={0}
-        selected={false}
-      />
-      <NaviOption
-        Icon={AccessTimeOutlinedIcon}
-        IconSelected={AccessTimeFilledIcon}
-        title="Snoozed"
-        number={0}
-        selected={false}
-      />
-      <NaviOption
-        Icon={LabelOutlinedIcon}
-        IconSelected={LabelIcon}
-        title="Important"
-        number={0}
-        selected={false}
-      />
-
-      <NaviOption
-        Icon={ScheduleSendOutlinedIcon}
-        IconSelected={ScheduleSendIcon}
-        title="Scheduled"
-        number={0}
-        selected={false}
-      />
-      <NaviOption
-        Icon={TextSnippetOutlinedIcon}
-        IconSelected={TextSnippetIcon}
-        title="Draft"
-        number={0}
-        selected={false}
-      />
-      <NaviOption
-        Icon={ReportGmailerrorredOutlinedIcon}
-        IconSelected={ReportIcon}
-        title="Spam"
-        number={0}
-        selected={false}
-      />
-      <NaviOption
-        Icon={DeleteOutlineIcon}
-        title="Trash"
-        number={0}
-        selected={false}
-      />
-      <NaviOption
-        Icon={ExpandMoreIcon}
-        title="More"
-        number={0}
-        selected={false}
-      />
+      {naviList.map((data) => (
+        <NaviOption {...data} />
+      ))}
     </div>
   );
 }
