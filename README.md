@@ -10,7 +10,7 @@ This probject was built with
 
 * [React](https://react.dev/)
 * [Redux](https://redux.js.org/) & [Redux Toolkit](https://redux-toolkit.js.org/)
-* [MUI](https://mui.com/core/) (UI icons & UI componentes)
+* [MUI](https://mui.com/core/) (UI icons & UI components)
 * [Firebase V9](https://firebase.google.com/) (Firestore database & authentication & deployment)
 * [react-hook-form](https://react-hook-form.com/)
 * [React Router](https://reactrouter.com/en/main/upgrading/v5#upgrade-to-react-router-v6)
