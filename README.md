@@ -1,12 +1,12 @@
 # Gmail Web App Clone
 
-Having fun with https://clone-c7b08.web.app/
+Having fun with <https://clone-c7b08.web.app/>
 
 <img src="./misc/1.jpg">
 <img src="./misc/2.jpg">
 <img src="./misc/3.jpg">
 
-This probject was built with 
+This probject was built with
 
 * [React](https://react.dev/)
 * [Redux](https://redux.js.org/) & [Redux Toolkit](https://redux-toolkit.js.org/)
@@ -16,6 +16,7 @@ This probject was built with
 * [React Router](https://reactrouter.com/en/main/upgrading/v5#upgrade-to-react-router-v6)
 
 ## Features
+
 * Gmail-like, responsive UI style
 * Account Management (register/login/logout)
 * "Inbox" and "Sent" email query
@@ -28,7 +29,9 @@ This probject was built with
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 In the project directory, you can run:
-#### `npm init`
+
+#### `npm install`
+
 Installs all dependencies.
 
 #### `npm start`
